@@ -19,7 +19,7 @@ workflow {
 
     YAHS(params.contigs, SAMTOOLS_FAIDX.out.fai, params.bed)
 
-    JUICER_PRE(YAHS.out.binary, YAHS.out.scaffolds_agp, params.contigs)
+    JUICER_PRE(YAHS.out.binary, YAHS.out.scaffolds_agp, SAMTOOLS_FAIDX.out.fai)
 
     PREPARE_PRETEXTMAP_INPUT(JUICER_PRE.out.aln_sort)
 
