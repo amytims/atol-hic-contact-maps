@@ -1,8 +1,8 @@
 process PREPARE_PRETEXTMAP_INPUT {
 
     input:
-    val fai
-    path pairs
+    path fai
+    val pairs
 
     output:
     path "*pairs.gz", emit: pairs
