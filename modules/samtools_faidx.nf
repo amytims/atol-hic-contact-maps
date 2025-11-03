@@ -4,9 +4,9 @@ process SAMTOOLS_FAIDX {
     path(fasta)
 
     output:
-    tuple val(meta), path ("*.{fa,fasta}") , emit: fa , optional: true
-    tuple val(meta), path ("*.fai")        , emit: fai, optional: true
-    tuple val(meta), path ("*.gzi")        , emit: gzi, optional: true
+    path "*.{fa,fasta}" , emit: fa , optional: true
+    path "*.fai"        , emit: fai, optional: true
+    path "*.gzi"        , emit: gzi, optional: true
 
     script:
     def args = task.ext.args ?: ''
