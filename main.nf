@@ -9,7 +9,7 @@
 include { SAMTOOLS_FAIDX } from './modules/samtools_faidx.nf'
 include { YAHS } from './modules/yahs.nf'
 include { JUICER_PRE } from './modules/juicer_pre.nf'
-include { PREPARE_PRETEXT_MAP_INPUT } from './modules/prepare_pretextmap_input.nf'
+include { PREPARE_PRETEXTMAP_INPUT } from './modules/prepare_pretextmap_input.nf'
 include { PRETEXTMAP } from './modules/pretextmap.nf'
 include { PRETEXTSNAPSHOT } from './modules/pretextsnapshot.nf'
 
