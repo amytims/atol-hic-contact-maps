@@ -2,7 +2,6 @@ process PREPARE_PRETEXTMAP_INPUT {
 
     input:
     path fai
-    val pairs
 
     output:
     path "*pairs.gz", emit: pairs
@@ -14,7 +13,7 @@ process PREPARE_PRETEXTMAP_INPUT {
     script:
     def args = task.ext.args ?: ''
     """
-    prepare_pretext.sh $fai $pairs | gzip -c > "pairsfile.pairs.gz"
+    prepare_pretext.sh $fai "pairsfile.pairs" | gzip -c > "pairsfile.pairs.gz"
 
     """
 
