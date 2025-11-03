@@ -6,7 +6,8 @@
 //yahs_prefix
 //yahs_params
 
-include { SAMTOOLS_FAIDX } from './modules/samtools_faidx.nf'
+include { SAMTOOLS_FAIDX as CONTIGS_FAIDX } from './modules/samtools_faidx.nf'
+include { SAMTOOLS_FAIDX as SCAFFOLDS_FAIDX } from './modules/samtools_faidx.nf'
 include { YAHS } from './modules/yahs.nf'
 include { JUICER_PRE } from './modules/juicer_pre.nf'
 include { PREPARE_PRETEXTMAP_INPUT } from './modules/prepare_pretextmap_input.nf'
@@ -15,13 +16,15 @@ include { PRETEXTSNAPSHOT } from './modules/pretextsnapshot.nf'
 
 workflow {
 
-    SAMTOOLS_FAIDX(params.contigs)
+    CONTIGS_FAIDX(params.contigs)
 
     YAHS(params.contigs, SAMTOOLS_FAIDX.out.fai, params.bed)
 
-    JUICER_PRE(YAHS.out.binary, YAHS.out.scaffolds_agp, SAMTOOLS_FAIDX.out.fai)
+    JUICER_PRE(YAHS.out.binary, YAHS.out.scaffolds_agp, CONTIGS_FAIDX.out.fai)
 
-    PREPARE_PRETEXTMAP_INPUT(JUICER_PRE.out.aln_sort)
+    SCAFFOLDS_FAIDX(YAHS.out.scaffolds_fasta)
+
+    PREPARE_PRETEXTMAP_INPUT(SCAFFOLDS_FAIDX.out.fai, JUICER_PRE.out.aln_sort)
 
     PRETEXTMAP(PREPARE_PRETEXTMAP_INPUT.out.pairs)
 

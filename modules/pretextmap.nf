@@ -5,7 +5,7 @@ process PRETEXTMAP {
     path input
 
     output:
-    tuple val(meta), path("*.pretext"), emit: pretext
+    path "*.pretext", emit: pretext
 
     script:
     def args = task.ext.args ?: ''
