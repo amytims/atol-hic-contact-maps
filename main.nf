@@ -18,7 +18,7 @@ workflow {
 
     CONTIGS_FAIDX(params.contigs)
 
-    YAHS(params.contigs, SAMTOOLS_FAIDX.out.fai, params.bed)
+    YAHS(params.contigs, CONTIGS_FAIDX.out.fai, params.bed)
 
     JUICER_PRE(YAHS.out.binary, YAHS.out.scaffolds_agp, CONTIGS_FAIDX.out.fai)
 
