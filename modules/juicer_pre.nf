@@ -7,7 +7,7 @@ process JUICER_PRE {
     path fai
 
     output:
-    path("*alignments_sorted.txt"), emit: pairs
+    path("*alignments_sorted.txt"), emit: aln_sort
 
     script:
     def args = task.ext.args ?: ''
