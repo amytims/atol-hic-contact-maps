@@ -21,7 +21,7 @@ workflow {
 
     JUICER_PRE(YAHS.out.binary, YAHS.out.scaffolds_agp, params.contigs)
 
-    PREPARE_PRETEXT_MAP_INPUT(JUICER_PRE.out.aln_sort, "pairs_file.pairs")
+    PREPARE_PRETEXTMAP_INPUT(JUICER_PRE.out.aln_sort, "pairs_file.pairs")
 
     PRETEXTMAP(PREPARE_PRETEXT_MAP_INPUT.out.pairs)
 
