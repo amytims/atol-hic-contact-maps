@@ -3,7 +3,6 @@ process PRETEXTMAP {
 
     input:
     path input
-    path fasta
 
     output:
     tuple val(meta), path("*.pretext"), emit: pretext
