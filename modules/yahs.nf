@@ -6,9 +6,9 @@ process YAHS {
     path bed
 
     output:
-    path("*scaffolds_final.fa") , emit: scaffolds_fasta
-    path("*scaffolds_final.agp"), emit: scaffolds_agp
-    path("*bin")                , emit: binary
+    path "*scaffolds_final.fa" , emit: scaffolds_fasta
+    path "*scaffolds_final.agp", emit: scaffolds_agp
+    path "*bin"                , emit: binary
 
     script:
     def args = params.yahs_params ?: ''
@@ -17,7 +17,6 @@ process YAHS {
     """
     yahs $args \\
         -o $prefix \\
-        ${args} \\
         $fasta \\
         $bed
     """
