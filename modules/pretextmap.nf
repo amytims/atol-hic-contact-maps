@@ -14,6 +14,7 @@ process PRETEXTMAP {
     """
     zcat $input | PretextMap \\
         $args \\
-        -o ${params.sample_id}.pretext
+        --mapq $params.pretextmap_mapq
+        -o ${prefix}.pretext
     """
 }
